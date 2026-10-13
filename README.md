@@ -42,6 +42,7 @@ LostLink/
 ├── llm.py
 ├── data/
 │   └── lostlink.db
+│   └── seed_data.ipynb
 ├── LostLink_Demo.ipynb
 ├── requirements.txt
 └── README.md
