@@ -169,23 +169,7 @@ python eval/run_eval.py --offline    # baselines only
 python eval/run_eval.py              # full evaluation (needs API key)
 ```
 
-## Evaluation
 
-We tested LostLink on 20 synthetic lost queries against 14 found reports. The set includes near-duplicate items, Chinese and Swedish descriptions, relative dates, and queries that should not match anything.
-
-| System | Accuracy (20 queries) |
-|---|---|
-| SQL filter only | 0.60 |
-| TF-IDF word matching (threshold tuned on the test set) | 0.90 |
-| **LostLink (full pipeline)** | **0.80** |
-| Perfect extraction + LLM rerank | 0.90 |
-
-- The LLM reranker tells near-duplicate items apart and rejects reports with conflicting details.
-- TF-IDF fails on non-English reports; LostLink matched both the Chinese and the Swedish query.
-- 3 of the 4 errors of the full pipeline came from the SQL filter removing the correct report (e.g. "laptop bag" labelled `bag` instead of `backpack`).
-- No explanation revealed a hidden feature.
-
-The evaluation set is small and synthetic, so these numbers show that the approach works, not its real-world accuracy.
 
 ## Limitations and Future Work
 
