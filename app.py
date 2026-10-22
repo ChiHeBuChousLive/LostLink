@@ -179,13 +179,29 @@ def handle_mark_matched(item_id):
 # ---------- UI ----------
 
 EXAMPLES = [
+    # 1. Synonyms + hidden feature: "navy" -> blue, "yesterday" -> date, QT -> hidden feature
     ["Lost", "I lost my navy metal water bottle at Ångström yesterday, near the vending machines "
              "by the main entrance. It has a white mountain sticker and QT is written under the lid."],
-    ["Lost", "Lost my black backpack in Ekonomikum on 12 October, back of the big lecture hall. "
+    # 2. Near-duplicates: two black backpacks pass SQL, the LLM must tell them apart
+    ["Lost", "Lost my black backpack in Ekonomikum yesterday, back of the big lecture hall. "
              "The right strap is a bit torn and my leaf keyring is inside."],
-    ["Lost", "我10月10日在Carolina Rediviva图书馆靠窗的阅读区丢了一个浅灰色的耳机盒，充电口旁边有一道小裂缝。"],
+    # 3. Near-miss: same category/place/day, but the details contradict -> no match
+    ["Lost", "I lost my black backpack at Ekonomikum yesterday. It has a NASA patch on the front "
+             "and my calculator is inside."],
+    # 4. Chinese input
+    ["Lost", "我前天在Carolina Rediviva图书馆靠窗的阅读区丢了一个浅灰色的耳机盒，充电口旁边有一道小裂缝，"
+             "硅胶套下面用铅笔写了AL。"],
+    # 5. Swedish input + found -> lost direction
+    ["Found", "Hittade tre nycklar på ett rött band nära ingång 10 på Ångström igår. "
+              "Det sitter en liten flasköppnare på bandet."],
+    # 6. Abbreviation: "BMC" -> biomedical_centre
+    ["Lost", "Lost my black iPhone at BMC yesterday, I think outside B42. Clear case, "
+             "and there's a cinema ticket tucked behind the phone."],
+    # 7. Found -> lost, hidden feature (name tag) confirms the owner
     ["Found", "Found a black umbrella with a wooden handle in the umbrella stand at Carolina Rediviva "
-              "on October 9. One spoke is bent and there is a name tag on the strap."],
+              "three days ago. One spoke is bent and there is a name tag on the strap."],
+    # 8. Nothing in the database -> clear "no match" message
+    ["Lost", "I lost a red umbrella at Ekonomikum yesterday."],
 ]
 
 

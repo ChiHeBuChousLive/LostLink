@@ -40,6 +40,28 @@ ITEM_CATEGORIES = [
     "other",
 ]
 
+# Typical items per category. Broad categories are easy to confuse ("is an
+# umbrella an accessory or outdoor gear?"), so the model gets explicit examples.
+# Without them it falls back to "other" whenever it is unsure.
+CATEGORY_EXAMPLES = {
+    "electronics": "phone, laptop, tablet, charger, cable, power bank, headphones, earbuds, AirPods case, mouse, USB stick, calculator, camera",
+    "bags_and_luggage": "backpack, laptop bag, tote bag, handbag, gym bag, suitcase, pencil case, pouch",
+    "clothing": "jacket, coat, hoodie, sweater, scarf, gloves, hat, cap, shirt",
+    "footwear": "shoes, sneakers, boots, sandals, slippers",
+    "personal_accessories": "umbrella, glasses, sunglasses, glasses case, wallet, purse, belt, hair clip, lanyard",
+    "jewelry_and_watches": "ring, necklace, bracelet, earrings, watch, smartwatch",
+    "cards_and_documents": "student card, ID card, bank card, passport, driving licence, bus card, papers",
+    "keys_and_access_items": "keys, keyring, key card, access fob, bike lock key",
+    "books_and_stationery": "book, notebook, textbook, folder, pen, ruler, sketchbook",
+    "drinkware_and_food_containers": "water bottle, thermos, mug, cup, lunch box, food container",
+    "health_and_beauty": "medicine, inhaler, glasses cleaner, makeup bag, lip balm, hairbrush",
+    "sports_and_outdoor": "ball, racket, yoga mat, bike helmet, bike light, swimming goggles",
+    "toys_and_hobbies": "toy, stuffed animal, board game, musical instrument, knitting",
+    "tools_and_equipment": "lab coat, safety goggles, tool, tape measure, multimeter",
+    "household_items": "blanket, pillow, towel, cushion, plant",
+}
+CATEGORY_GUIDE = "\n".join(f"  - {c}: {ex}" for c, ex in CATEGORY_EXAMPLES.items())
+
 COLORS = [
     "black",
     "white",
@@ -78,7 +100,9 @@ EXTRACTION_SYSTEM_PROMPT = f"""You extract structured information from lost-and-
 The user describes an item they lost or found. Return one JSON object.
 
 Field rules:
-- item_category: the closest value from the allowed list. Use "other" only if nothing fits.
+- item_category: the broad category the item belongs to. Use the typical items listed below
+  as a guide and pick the closest category even if the exact item is not listed.
+  Use "other" only if the item clearly fits none of the categories.
 - main_color: the dominant color, mapped to the closest base color in the allowed list
   (navy / dark blue / light blue -> "blue", light grey / dark grey -> "grey").
   Mention the exact shade in feature_description instead. Use "unknown" if no color is given.
@@ -86,7 +110,8 @@ Field rules:
 - event_date: the date the item was lost or found, as YYYY-MM-DD. Resolve relative dates
   ("yesterday", "last Monday") using today's date. Use an empty string if no date is given.
 - detailed_location: where exactly inside the location (room, floor, near what). Empty string if not given.
-- feature_description: visible features someone would notice at a glance (material, brand,
+- feature_description: start with the specific item type (e.g. "water bottle", "laptop backpack"),
+  because the category is broad. Then add visible features someone would notice at a glance (material, brand,
   stickers, scratches, exact shade). Empty string if not given.
 - hidden_feature: details that are not visible at a glance and would help verify the real owner
   (writing inside a lid, items inside a pocket, engravings, contents). Empty string if not given.
@@ -96,7 +121,9 @@ Field rules:
 Only use information stated in the description. Do not invent details.
 Write detailed_location, feature_description and hidden_feature in English.
 
-Allowed item_category values: {", ".join(ITEM_CATEGORIES)}
+Allowed item_category values (with typical items):
+{CATEGORY_GUIDE}
+  - other: anything that fits none of the above
 Allowed main_color values: {", ".join(COLORS)}
 Allowed general_location values: {", ".join(LOCATIONS)}
 """
