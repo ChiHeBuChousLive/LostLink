@@ -1,0 +1,305 @@
+{
+  "meta": {
+    "description": "Evaluation set for lost-and-found matching (Uppsala University). 7 cases with a correct match, 3 without.",
+    "today": "2026-10-20",
+    "date_range": ["2026-10-01", "2026-10-20"],
+    "assumed_enums": {
+      "_note": "Placeholder values — replace with the project's real enum lists.",
+      "category": ["electronics", "bags", "wallets_cards", "keys", "clothing", "accessories", "bottles", "umbrellas", "books_stationery", "other"],
+      "color": ["black", "white", "grey", "blue", "navy", "red", "green", "yellow", "brown", "pink", "purple", "silver", "gold", "multicolor", "other"],
+      "general_location": ["angstrom", "itc_polacksbacken", "ekonomikum", "carolina_rediviva", "blasenhus", "segerstedthuset", "bmc", "engelska_parken", "nations_area", "studentstaden", "central_station", "other"]
+    }
+  },
+  "cases": [
+    {
+      "case_id": 1,
+      "has_match": true,
+      "notes": "Synonym test (airpods vs wireless earbud charging case); the distractor is the same product at another location, and only the hidden feature tells them apart.",
+      "query_text": "lost my airpods yesterday, pretty sure it was somewhere in ångström. just the white case w/ both buds inside. theres a small cat sticker on the back of the case",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "Found a white wireless earbud charging case on a bench in the corridor outside room 2001, Ångström. Both earbuds inside.",
+          "item_category": "electronics",
+          "main_color": "white",
+          "general_location": "angstrom",
+          "event_date": "2026-10-19",
+          "feature_description": "White earbud charging case, both earbuds inside, small scratches on the lid",
+          "hidden_feature": "Cat-shaped sticker on the back of the case",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "White AirPods case left in the ITC lunch room, no earbuds in it.",
+          "item_category": "electronics",
+          "main_color": "white",
+          "general_location": "itc_polacksbacken",
+          "event_date": "2026-10-18",
+          "feature_description": "White AirPods charging case, empty",
+          "hidden_feature": "Initials 'MK' engraved on the front",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 2,
+      "has_match": true,
+      "notes": "Chinese query with a vague date ('上周' = 10-12 to 10-18). The distractor is also a black backpack found at the same time but somewhere else, with different contents.",
+      "query_text": "我上周在Ekonomikum那边丢了一个黑色双肩包😭 里面有一台联想笔记本还有一本统计学的书，包侧面那个小拉链是坏的",
+      "query_language": "zh",
+      "found_records": [
+        {
+          "raw_description": "Black backpack left under a table on the ground floor of Ekonomikum. Has a laptop and a textbook inside, handed to reception.",
+          "item_category": "bags",
+          "main_color": "black",
+          "general_location": "ekonomikum",
+          "event_date": "2026-10-14",
+          "feature_description": "Black backpack containing a laptop and a textbook",
+          "hidden_feature": "Side pocket zipper is broken; the book is 'Statistical Inference'",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Found a black rucksack in Blåsenhus, 3rd floor study area. Some Swedish course books inside.",
+          "item_category": "bags",
+          "main_color": "black",
+          "general_location": "blasenhus",
+          "event_date": "2026-10-15",
+          "feature_description": "Black rucksack containing Swedish language course books",
+          "hidden_feature": "Small moose-shaped keychain on the zipper",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 3,
+      "has_match": true,
+      "notes": "Swedish query, and the location is a route rather than a single place (Flogsta → station). 'I måndags' = 2026-10-19. In the distractor, keyring vs. lanyard and the number of keys differ.",
+      "query_text": "Hej, jag har tappat mina nycklar någonstans mellan Flogsta och centralen i måndags. Tre nycklar på en röd nyckelsnodd, en av dem är en cykelnyckel.",
+      "query_language": "sv",
+      "found_records": [
+        {
+          "raw_description": "Keys on a red lanyard found on the ground near the bus stops at Uppsala Centralstation.",
+          "item_category": "keys",
+          "main_color": "red",
+          "general_location": "central_station",
+          "event_date": "2026-10-19",
+          "feature_description": "Three keys on a red lanyard",
+          "hidden_feature": "One small key is an ABUS bike lock key",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Bunch of keys with a red plastic keyring, found outside the laundry room in Studentstaden.",
+          "item_category": "keys",
+          "main_color": "red",
+          "general_location": "studentstaden",
+          "event_date": "2026-10-19",
+          "feature_description": "Two keys on a red keyring",
+          "hidden_feature": "An ICA loyalty card tag is attached to the ring",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 4,
+      "has_match": true,
+      "notes": "Very short, generic query. 'Last week' = 10-12 to 10-18, and the distractor matches on everything except the date (two weeks ago).",
+      "query_text": "black umbrella, carolina, last week",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "Black umbrella left in the umbrella stand at the Carolina Rediviva entrance at closing time.",
+          "item_category": "umbrellas",
+          "main_color": "black",
+          "general_location": "carolina_rediviva",
+          "event_date": "2026-10-13",
+          "feature_description": "Black folding umbrella, automatic open button",
+          "hidden_feature": "Wrist strap is tied in a knot",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Black umbrella left in the Carolina reading room.",
+          "item_category": "umbrellas",
+          "main_color": "black",
+          "general_location": "carolina_rediviva",
+          "event_date": "2026-10-06",
+          "feature_description": "Black long umbrella with a wooden handle",
+          "hidden_feature": "One spoke is bent",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 5,
+      "has_match": true,
+      "notes": "Date offset: lost Friday night, reported found Saturday morning. The query uses 'nation' (location type) with no specific place. The distractor is a green phone case of a different brand at a different location.",
+      "query_text": "Lost my iPhone at a nation pub on friday night (i think västgöta but could have been another one). it has a dark green silicone case and the screen is cracked. please help",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "Phone in a green case found on a table after the Friday pub, handed in Saturday morning. Screen is cracked, phone is locked.",
+          "item_category": "electronics",
+          "main_color": "green",
+          "general_location": "nations_area",
+          "event_date": "2026-10-17",
+          "feature_description": "iPhone in a dark green silicone case, cracked screen",
+          "hidden_feature": "Crack starts in the top-left corner; lock screen photo shows a dog on a beach",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Samsung phone with a green case found in an Ekonomikum lecture hall.",
+          "item_category": "electronics",
+          "main_color": "green",
+          "general_location": "ekonomikum",
+          "event_date": "2026-10-16",
+          "feature_description": "Samsung phone in a light green transparent case, screen intact",
+          "hidden_feature": "Bus ticket tucked inside the case",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 6,
+      "has_match": false,
+      "notes": "No match. Chinese query, '图书馆' is ambiguous (Carolina / Ångström library etc.). Both distractors are student cards with a similar-looking name that is not the same.",
+      "query_text": "学生卡丢了，上面名字是 Wang Lei，大概是十月初在图书馆丢的，不记得是哪个图书馆了",
+      "query_language": "zh",
+      "found_records": [
+        {
+          "raw_description": "UU student card found on a desk at Carolina Rediviva.",
+          "item_category": "wallets_cards",
+          "main_color": "white",
+          "general_location": "carolina_rediviva",
+          "event_date": "2026-10-03",
+          "feature_description": "Uppsala University student/access card",
+          "hidden_feature": "Name on card: Wang Lin",
+          "is_correct_match": false
+        },
+        {
+          "raw_description": "Student card picked up near the Ångström library entrance.",
+          "item_category": "wallets_cards",
+          "main_color": "white",
+          "general_location": "angstrom",
+          "event_date": "2026-10-02",
+          "feature_description": "Uppsala University student/access card",
+          "hidden_feature": "Name on card: Lei Zhang",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 7,
+      "has_match": true,
+      "notes": "Messy text, location uncertain (Segerstedt or ITC). The owner says dark blue while the finder writes navy. The distractor is a black puffer at the other possible location, and the pocket contents tell them apart.",
+      "query_text": "left my jacket in a lecture hall at segerstedt?? or maybe ITC idk, it was the 8th i think. its dark blue, puffer style like north face. should be a hair tie and some receipts in the pocket",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "Navy puffer jacket left on a chair in a Polacksbacken lecture hall after the afternoon lecture.",
+          "item_category": "clothing",
+          "main_color": "navy",
+          "general_location": "itc_polacksbacken",
+          "event_date": "2026-10-08",
+          "feature_description": "Navy blue down/puffer jacket, size M",
+          "hidden_feature": "Hair tie and a few crumpled receipts in the left pocket",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Black puffer jacket found in Segerstedthuset, ground floor.",
+          "item_category": "clothing",
+          "main_color": "black",
+          "general_location": "segerstedthuset",
+          "event_date": "2026-10-08",
+          "feature_description": "Black puffer jacket with a hood, size L",
+          "hidden_feature": "Pair of grey gloves in the pockets",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 8,
+      "has_match": false,
+      "notes": "No match. Distractor 1 has the same place and date but a different item type (necklace vs bracelet). Distractor 2 has the same item type and charms but a different color and charm.",
+      "query_text": "Lost a silver charm bracelet around Engelska parken on the 10th, one of the charms is a tiny Eiffel tower. It means a lot to me",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "Silver necklace found on the path in Engelska parken.",
+          "item_category": "accessories",
+          "main_color": "silver",
+          "general_location": "engelska_parken",
+          "event_date": "2026-10-10",
+          "feature_description": "Thin silver chain necklace with a small pendant",
+          "hidden_feature": "Pendant is a heart engraved with the letter 'S'",
+          "is_correct_match": false
+        },
+        {
+          "raw_description": "Bracelet with charms found on the floor in Carolina.",
+          "item_category": "accessories",
+          "main_color": "gold",
+          "general_location": "carolina_rediviva",
+          "event_date": "2026-10-11",
+          "feature_description": "Gold-colored charm bracelet",
+          "hidden_feature": "Charms: a star, a moon, and a four-leaf clover",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 9,
+      "has_match": true,
+      "notes": "Mixed Swedish/English (glasögon = glasses). The distractor is sunglasses in the same kind of case at the same place, a near-synonym trap.",
+      "query_text": "Hej! I lost my glasögon (glasses) in a brown case, maybe in the BMC lab area, some day last week. They're my only pair so kind of urgent",
+      "query_language": "sv/en",
+      "found_records": [
+        {
+          "raw_description": "Brown glasses case with prescription glasses inside, found on a windowsill in BMC, B-corridor.",
+          "item_category": "accessories",
+          "main_color": "brown",
+          "general_location": "bmc",
+          "event_date": "2026-10-15",
+          "feature_description": "Prescription glasses with thin black frame, in a brown hard case",
+          "hidden_feature": "Case is printed with 'Synsam' on the inside",
+          "is_correct_match": true
+        },
+        {
+          "raw_description": "Sunglasses in a brown case left in the BMC cafeteria.",
+          "item_category": "accessories",
+          "main_color": "brown",
+          "general_location": "bmc",
+          "event_date": "2026-10-14",
+          "feature_description": "Dark tinted sunglasses in a brown soft case",
+          "hidden_feature": "One lens has a small scratch",
+          "is_correct_match": false
+        }
+      ]
+    },
+    {
+      "case_id": 10,
+      "has_match": false,
+      "notes": "No match. Relative date ('2 weeks ago' ≈ 10-06). Distractor 1 is a different brand; distractor 2 is the same brand and place but has a different connector (slim tip, not USB-C).",
+      "query_text": "lenovo laptop charger, usb-c, 65W, left it plugged in at the ångström study area about 2 weeks ago",
+      "query_language": "en",
+      "found_records": [
+        {
+          "raw_description": "USB-C laptop charger left plugged into a wall socket in an Ångström study area.",
+          "item_category": "electronics",
+          "main_color": "black",
+          "general_location": "angstrom",
+          "event_date": "2026-10-07",
+          "feature_description": "Black USB-C laptop charger, Dell, 65W",
+          "hidden_feature": "Strip of tape with a phone number on the brick",
+          "is_correct_match": false
+        },
+        {
+          "raw_description": "Lenovo charger found under a desk in the Ångström study area.",
+          "item_category": "electronics",
+          "main_color": "black",
+          "general_location": "angstrom",
+          "event_date": "2026-10-06",
+          "feature_description": "Black Lenovo laptop charger with rectangular slim-tip connector, 65W",
+          "hidden_feature": "Cable is wrapped with a velcro tie",
+          "is_correct_match": false
+        }
+      ]
+    }
+  ]
+}

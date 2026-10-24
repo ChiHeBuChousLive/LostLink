@@ -180,6 +180,15 @@ def get_candidates(item, limit=10, db_path=None):
 
     Args:
         item: Dictionary containing the report information.
+
+            Optional search fields (set by llm.extract_item):
+                search_categories: categories to search
+                    (defaults to [item_category])
+                search_locations: locations to search
+                    (defaults to [general_location])
+                date_window_days: maximum date difference in days,
+                    or None to ignore the date (defaults to 7)
+
         limit: Maximum number of candidates to return.
         db_path: Optional database file path.
 
@@ -191,6 +200,14 @@ def get_candidates(item, limit=10, db_path=None):
     location = item.get("general_location")
     color = item.get("main_color")
     event_date = item.get("event_date")
+
+    categories = item.get("search_categories") or [category]
+    locations = item.get("search_locations") or [location]
+    date_window = item.get("date_window_days", 7)
+
+    # Without a date window, the date is not used for filtering.
+    if date_window is None:
+        event_date = None
 
     if report_type not in ("lost", "found"):
         raise ValueError(
@@ -217,13 +234,16 @@ def get_candidates(item, limit=10, db_path=None):
         "found" if report_type == "lost" else "lost"
     )
 
-    query = """
+    category_marks = ", ".join("?" for _ in categories)
+    location_marks = ", ".join("?" for _ in locations)
+
+    query = f"""
     SELECT *
     FROM items
     WHERE report_type = ?
       AND status = 'open'
-      AND item_category = ?
-      AND general_location = ?
+      AND item_category IN ({category_marks})
+      AND general_location IN ({location_marks})
 
       AND (
           ? IS NULL
@@ -238,7 +258,7 @@ def get_candidates(item, limit=10, db_path=None):
           OR event_date IS NULL
           OR ABS(
               julianday(event_date) - julianday(?)
-          ) <= 7
+          ) <= ?
       )
 
     ORDER BY created_at DESC, id DESC
@@ -247,13 +267,14 @@ def get_candidates(item, limit=10, db_path=None):
 
     parameters = (
         opposite_type,
-        category,
-        location,
+        *categories,
+        *locations,
         color,
         color,
         color,
         event_date,
         event_date,
+        date_window,
         limit,
     )
 
