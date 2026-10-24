@@ -222,3 +222,6 @@ __marimo__/
 # LostLink local files
 .gradio/
 data/lostlink.db
+
+# Evaluation runs without the LLM
+eval/results_offline_*.json

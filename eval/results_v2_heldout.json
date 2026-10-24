@@ -1,0 +1,2848 @@
+{
+  "version": "v2",
+  "set": "heldout",
+  "today": "2026-10-20",
+  "model": "openai/gpt-oss-120b",
+  "results": [
+    {
+      "system": "TF-IDF over all records",
+      "accuracy": 0.1,
+      "hit_at_1": 0.0,
+      "recall_at_3": 0.7142857142857143,
+      "rejection": 0.3333333333333333,
+      "threshold": 0.244
+    },
+    {
+      "system": "LostLink (LLM extract + SQL + LLM rerank)",
+      "runs": 3,
+      "accuracy": {
+        "mean": 0.7333333333333333,
+        "std": 0.05773502691896263
+      },
+      "hit_at_1": {
+        "mean": 0.7142857142857143,
+        "std": 0.0
+      },
+      "recall_at_3": {
+        "mean": 0.9523809523809523,
+        "std": 0.08247860988423228
+      },
+      "rejection": {
+        "mean": 0.7777777777777778,
+        "std": 0.19245008972987526
+      },
+      "candidate_recall": {
+        "mean": 0.9523809523809523,
+        "std": 0.08247860988423228
+      },
+      "extract_latency_s": {
+        "mean": 9.9406636333338,
+        "std": 1.5041396002039127
+      },
+      "score_latency_s": {
+        "mean": 4.205953199999554,
+        "std": 1.703323431307943
+      },
+      "per_run": [
+        {
+          "system": "LostLink (LLM extract + SQL + LLM rerank)",
+          "accuracy": 0.8,
+          "hit_at_1": 0.7142857142857143,
+          "recall_at_3": 1.0,
+          "rejection": 1.0,
+          "candidate_recall": 1.0,
+          "field_accuracy": {},
+          "extract_latency_s": 11.654336639999382,
+          "score_latency_s": 6.010761577776672
+        },
+        {
+          "system": "LostLink (LLM extract + SQL + LLM rerank)",
+          "accuracy": 0.7,
+          "hit_at_1": 0.7142857142857143,
+          "recall_at_3": 1.0,
+          "rejection": 0.6666666666666666,
+          "candidate_recall": 1.0,
+          "field_accuracy": {},
+          "extract_latency_s": 8.839021990000038,
+          "score_latency_s": 3.9805355333341543
+        },
+        {
+          "system": "LostLink (LLM extract + SQL + LLM rerank)",
+          "accuracy": 0.7,
+          "hit_at_1": 0.7142857142857143,
+          "recall_at_3": 0.8571428571428571,
+          "rejection": 0.6666666666666666,
+          "candidate_recall": 0.8571428571428571,
+          "field_accuracy": {},
+          "extract_latency_s": 9.32863227000198,
+          "score_latency_s": 2.626562488887834
+        }
+      ]
+    }
+  ],
+  "by_type": {
+    "messy text": {
+      "n": 1,
+      "tfidf": 0,
+      "lostlink": 1
+    },
+    "near-miss": {
+      "n": 2,
+      "tfidf": 0,
+      "lostlink": 1.3333333333333333
+    },
+    "no match": {
+      "n": 3,
+      "tfidf": 1,
+      "lostlink": 2.3333333333333335
+    },
+    "non-English": {
+      "n": 4,
+      "tfidf": 1,
+      "lostlink": 3
+    },
+    "relative date": {
+      "n": 2,
+      "tfidf": 0,
+      "lostlink": 1.3333333333333333
+    },
+    "short / generic": {
+      "n": 1,
+      "tfidf": 0,
+      "lostlink": 0
+    },
+    "synonym": {
+      "n": 3,
+      "tfidf": 0,
+      "lostlink": 3
+    },
+    "uncertain location": {
+      "n": 4,
+      "tfidf": 1,
+      "lostlink": 3
+    },
+    "vague date": {
+      "n": 4,
+      "tfidf": 1,
+      "lostlink": 3
+    },
+    "weekday date": {
+      "n": 2,
+      "tfidf": 0,
+      "lostlink": 1
+    }
+  },
+  "details": {
+    "tfidf": [
+      {
+        "expected": "H1.1",
+        "ranked": [
+          [
+            "H1.1",
+            0.19597890457622022
+          ],
+          [
+            "H1.2",
+            0.17409979930600453
+          ],
+          [
+            "F12",
+            0.09716036566089913
+          ],
+          [
+            "F7",
+            0.07964634761891405
+          ],
+          [
+            "F3",
+            0.06816003596577017
+          ],
+          [
+            "F14",
+            0.0668119308176486
+          ],
+          [
+            "F1",
+            0.05298581620051502
+          ],
+          [
+            "H10.2",
+            0.051502734949012155
+          ],
+          [
+            "H6.2",
+            0.0477453310200608
+          ],
+          [
+            "H9.1",
+            0.04671208011280575
+          ],
+          [
+            "H9.2",
+            0.04613725503509516
+          ],
+          [
+            "F10",
+            0.04552828277942642
+          ],
+          [
+            "F5",
+            0.044542532909379554
+          ],
+          [
+            "H5.2",
+            0.04424609074717839
+          ],
+          [
+            "F2",
+            0.042667378811031456
+          ],
+          [
+            "H10.1",
+            0.03603494680326684
+          ],
+          [
+            "H5.1",
+            0.024607980595855217
+          ],
+          [
+            "H2.1",
+            0.020445098659363975
+          ],
+          [
+            "H2.2",
+            0.018311650787340265
+          ],
+          [
+            "F9",
+            0.014819857937038156
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": "H2.1",
+        "ranked": [
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F2",
+            0.0
+          ],
+          [
+            "F3",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F5",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F7",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F10",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F12",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "F14",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H1.2",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H9.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": "H3.1",
+        "ranked": [
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F2",
+            0.0
+          ],
+          [
+            "F3",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F5",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F7",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F10",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F12",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "F14",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H1.2",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H9.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": "H4.1",
+        "ranked": [
+          [
+            "H4.2",
+            0.355053360569387
+          ],
+          [
+            "H4.1",
+            0.29543265641954936
+          ],
+          [
+            "H8.2",
+            0.08308041978855284
+          ],
+          [
+            "F10",
+            0.08106707021914474
+          ],
+          [
+            "H6.1",
+            0.07206529509920014
+          ],
+          [
+            "F12",
+            0.039885798418810875
+          ],
+          [
+            "F7",
+            0.03577373835713279
+          ],
+          [
+            "H7.2",
+            0.02875823729384813
+          ],
+          [
+            "F5",
+            0.02590317475375251
+          ],
+          [
+            "H2.1",
+            0.021008768613718493
+          ],
+          [
+            "H2.2",
+            0.018816501731589854
+          ],
+          [
+            "F14",
+            0.01559094385986423
+          ],
+          [
+            "F11",
+            0.014108888294837899
+          ],
+          [
+            "F8",
+            0.013075873111806613
+          ],
+          [
+            "F13",
+            0.012650161959896173
+          ],
+          [
+            "F3",
+            0.010576122723606857
+          ],
+          [
+            "F4",
+            0.01055566820547421
+          ],
+          [
+            "F2",
+            0.010355476911420962
+          ],
+          [
+            "F1",
+            0.010298669168846362
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H1.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H9.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": "H4.2"
+      },
+      {
+        "expected": "H5.1",
+        "ranked": [
+          [
+            "H5.1",
+            0.23949740219607918
+          ],
+          [
+            "F13",
+            0.08974005041224631
+          ],
+          [
+            "H5.2",
+            0.0842528000460157
+          ],
+          [
+            "F12",
+            0.07270531148126998
+          ],
+          [
+            "F5",
+            0.056859023909128684
+          ],
+          [
+            "F10",
+            0.043884960983556015
+          ],
+          [
+            "F1",
+            0.031241103586602634
+          ],
+          [
+            "F3",
+            0.025008949539972875
+          ],
+          [
+            "F14",
+            0.024596231844819145
+          ],
+          [
+            "H9.2",
+            0.021975563596145144
+          ],
+          [
+            "H1.2",
+            0.017217566887510055
+          ],
+          [
+            "H1.1",
+            0.014121324567584604
+          ],
+          [
+            "H9.1",
+            0.014014115169020422
+          ],
+          [
+            "F7",
+            0.010876255118302224
+          ],
+          [
+            "F2",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": null,
+        "ranked": [
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F2",
+            0.0
+          ],
+          [
+            "F3",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F5",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F7",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F10",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F12",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "F14",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H1.2",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H9.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": "H7.1",
+        "ranked": [
+          [
+            "H7.1",
+            0.18797342843737808
+          ],
+          [
+            "H7.2",
+            0.15087514699848528
+          ],
+          [
+            "F3",
+            0.1107052247834056
+          ],
+          [
+            "F11",
+            0.10221496426907356
+          ],
+          [
+            "H1.2",
+            0.09780435128911236
+          ],
+          [
+            "F10",
+            0.08986519356247996
+          ],
+          [
+            "H5.2",
+            0.08118182035402974
+          ],
+          [
+            "F14",
+            0.06238926321996245
+          ],
+          [
+            "F6",
+            0.05856082600476523
+          ],
+          [
+            "F1",
+            0.04339301089737701
+          ],
+          [
+            "H4.2",
+            0.01849478881534584
+          ],
+          [
+            "F9",
+            0.01631555776496129
+          ],
+          [
+            "F4",
+            0.013355846305801352
+          ],
+          [
+            "H9.2",
+            0.01334846113014865
+          ],
+          [
+            "F5",
+            0.012632449262683467
+          ],
+          [
+            "H2.1",
+            0.010066023772225197
+          ],
+          [
+            "F2",
+            0.009923330460694019
+          ],
+          [
+            "H4.1",
+            0.009563117333892996
+          ],
+          [
+            "H10.1",
+            0.008642225177438602
+          ],
+          [
+            "F12",
+            0.007365878127152361
+          ],
+          [
+            "F7",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": null,
+        "ranked": [
+          [
+            "H8.2",
+            0.29191864644252863
+          ],
+          [
+            "H8.1",
+            0.279804845396724
+          ],
+          [
+            "F12",
+            0.040243137730264784
+          ],
+          [
+            "F2",
+            0.02710783070117316
+          ],
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F3",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F5",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F7",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F10",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "F14",
+            0.0
+          ],
+          [
+            "H1.1",
+            0.0
+          ],
+          [
+            "H1.2",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H2.2",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ],
+          [
+            "H9.2",
+            0.0
+          ],
+          [
+            "H10.1",
+            0.0
+          ],
+          [
+            "H10.2",
+            0.0
+          ]
+        ],
+        "pred": "H8.2"
+      },
+      {
+        "expected": "H9.1",
+        "ranked": [
+          [
+            "H9.1",
+            0.2061970749344776
+          ],
+          [
+            "F14",
+            0.16380819542635622
+          ],
+          [
+            "H9.2",
+            0.16325157344540478
+          ],
+          [
+            "H10.2",
+            0.03816832900177969
+          ],
+          [
+            "F5",
+            0.02969966566529882
+          ],
+          [
+            "H2.2",
+            0.027859120453383054
+          ],
+          [
+            "H10.1",
+            0.026705255682253796
+          ],
+          [
+            "H5.2",
+            0.019960378373889077
+          ],
+          [
+            "H1.2",
+            0.016307123978643975
+          ],
+          [
+            "F2",
+            0.0153319933079361
+          ],
+          [
+            "H1.1",
+            0.013374606991265489
+          ],
+          [
+            "H5.1",
+            0.011101197764955403
+          ],
+          [
+            "F7",
+            0.01030113266272112
+          ],
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F3",
+            0.0
+          ],
+          [
+            "F4",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F10",
+            0.0
+          ],
+          [
+            "F11",
+            0.0
+          ],
+          [
+            "F12",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "H2.1",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H4.1",
+            0.0
+          ],
+          [
+            "H4.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H6.2",
+            0.0
+          ],
+          [
+            "H7.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ]
+        ],
+        "pred": null
+      },
+      {
+        "expected": null,
+        "ranked": [
+          [
+            "H10.1",
+            0.5183512917872937
+          ],
+          [
+            "H10.2",
+            0.3955869592851142
+          ],
+          [
+            "H2.2",
+            0.07411247770458623
+          ],
+          [
+            "H2.1",
+            0.0634183842117528
+          ],
+          [
+            "H6.2",
+            0.05729921922266549
+          ],
+          [
+            "F2",
+            0.053650247373379756
+          ],
+          [
+            "F4",
+            0.050616158692390015
+          ],
+          [
+            "F12",
+            0.0464068136232337
+          ],
+          [
+            "H1.1",
+            0.04292227345880297
+          ],
+          [
+            "F7",
+            0.027154115668587248
+          ],
+          [
+            "H4.2",
+            0.02397397455035962
+          ],
+          [
+            "F5",
+            0.01966184792948207
+          ],
+          [
+            "H9.2",
+            0.01730301819694848
+          ],
+          [
+            "H1.2",
+            0.01355668863091289
+          ],
+          [
+            "H4.1",
+            0.01239624490303035
+          ],
+          [
+            "H7.1",
+            0.011353102105636184
+          ],
+          [
+            "F10",
+            0.008985008123972703
+          ],
+          [
+            "F11",
+            0.008762757882481383
+          ],
+          [
+            "F3",
+            0.006568625452671873
+          ],
+          [
+            "F1",
+            0.0
+          ],
+          [
+            "F6",
+            0.0
+          ],
+          [
+            "F8",
+            0.0
+          ],
+          [
+            "F9",
+            0.0
+          ],
+          [
+            "F13",
+            0.0
+          ],
+          [
+            "F14",
+            0.0
+          ],
+          [
+            "H3.1",
+            0.0
+          ],
+          [
+            "H3.2",
+            0.0
+          ],
+          [
+            "H5.1",
+            0.0
+          ],
+          [
+            "H5.2",
+            0.0
+          ],
+          [
+            "H6.1",
+            0.0
+          ],
+          [
+            "H7.2",
+            0.0
+          ],
+          [
+            "H8.1",
+            0.0
+          ],
+          [
+            "H8.2",
+            0.0
+          ],
+          [
+            "H9.1",
+            0.0
+          ]
+        ],
+        "pred": "H10.1"
+      }
+    ],
+    "lostlink": [
+      [
+        {
+          "tag": "case 1",
+          "tags": [
+            "synonym",
+            "relative date"
+          ],
+          "text": "lost my airpods yesterday, pretty sure it was somewhere in ångström. just the white case w/ both buds inside. theres a small cat sticker on the back of the case",
+          "expected": "H1.1",
+          "extracted": {
+            "item_category": "headphones",
+            "main_color": "white",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "headphone_case",
+              "headphones"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H1.1"
+          ],
+          "ranked": [
+            [
+              "H1.1",
+              95
+            ]
+          ],
+          "reasons": [
+            "All visible details (white case, both buds, location and date) agree and the hidden feature matches, with no contradictions."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H1.1"
+        },
+        {
+          "tag": "case 2",
+          "tags": [
+            "non-English",
+            "vague date"
+          ],
+          "text": "我上周在Ekonomikum那边丢了一个黑色双肩包😭 里面有一台联想笔记本还有一本统计学的书，包侧面那个小拉链是坏的",
+          "expected": "H2.1",
+          "extracted": {
+            "item_category": "backpack",
+            "main_color": "black",
+            "general_location": "ekonomikum",
+            "event_date": "2026-10-13"
+          },
+          "search": {
+            "search_categories": [
+              "backpack",
+              "bag"
+            ],
+            "search_locations": [
+              "ekonomikum"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H2.1",
+            "F4",
+            "F3"
+          ],
+          "ranked": [
+            [
+              "H2.1",
+              95
+            ],
+            [
+              "F4",
+              50
+            ]
+          ],
+          "reasons": [
+            "All main details line up: same color, location, date within a day, broken side zipper and the presence of a laptop and a statistics book are confirmed.",
+            "Matches on color and general location, but the broken side zipper and the specific contents (laptop and statistics book) are not mentioned, and the hidden feature described is different."
+          ],
+          "leaks": [
+            [
+              "book",
+              "broken",
+              "laptop",
+              "side",
+              "zipper"
+            ],
+            [
+              "book",
+              "broken",
+              "laptop",
+              "side",
+              "zipper"
+            ]
+          ],
+          "pred": "H2.1"
+        },
+        {
+          "tag": "case 3",
+          "tags": [
+            "non-English",
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Hej, jag har tappat mina nycklar någonstans mellan Flogsta och centralen i måndags. Tre nycklar på en röd nyckelsnodd, en av dem är en cykelnyckel.",
+          "expected": "H3.1",
+          "extracted": {
+            "item_category": "keys",
+            "main_color": "red",
+            "general_location": "uppsala_central_station",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "keys"
+            ],
+            "search_locations": [
+              "uppsala_central_station"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H3.1"
+          ],
+          "ranked": [
+            [
+              "H3.1",
+              59
+            ]
+          ],
+          "reasons": [
+            "The key details such as red lanyard, three keys and a bike key match, and the date and location are compatible; the hidden feature also matches."
+          ],
+          "leaks": [
+            [
+              "bike",
+              "key"
+            ]
+          ],
+          "pred": null
+        },
+        {
+          "tag": "case 4",
+          "tags": [
+            "short / generic",
+            "vague date"
+          ],
+          "text": "black umbrella, carolina, last week",
+          "expected": "H4.1",
+          "extracted": {
+            "item_category": "umbrella",
+            "main_color": "black",
+            "general_location": "carolina_rediviva",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "umbrella"
+            ],
+            "search_locations": [
+              "carolina_rediviva"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H4.2",
+            "H4.1"
+          ],
+          "ranked": [
+            [
+              "H4.2",
+              59
+            ],
+            [
+              "H4.1",
+              59
+            ]
+          ],
+          "reasons": [
+            "Matches color, category and general location; date is a bit earlier than \"last week\" but could be a memory error, and no conflicting details.",
+            "Matches color, category and general location; date fits the \"last week\" timeframe and no details conflict, hidden feature aligns."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": null
+        },
+        {
+          "tag": "case 5",
+          "tags": [
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Lost my iPhone at a nation pub on friday night (i think västgöta but could have been another one). it has a dark green silicone case and the screen is cracked. please help",
+          "expected": "H5.1",
+          "extracted": {
+            "item_category": "phone",
+            "main_color": "green",
+            "general_location": "other",
+            "event_date": "2026-10-16"
+          },
+          "search": {
+            "search_categories": [
+              "phone"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H5.1"
+          ],
+          "ranked": [
+            [
+              "H5.1",
+              92
+            ]
+          ],
+          "reasons": [
+            "The green silicone case, cracked screen and timing around the Friday pub all align, and the dates are only one day apart, giving a strong match."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H5.1"
+        },
+        {
+          "tag": "case 6",
+          "tags": [
+            "no match",
+            "non-English",
+            "uncertain location",
+            "vague date"
+          ],
+          "text": "学生卡丢了，上面名字是 Wang Lei，大概是十月初在图书馆丢的，不记得是哪个图书馆了",
+          "expected": null,
+          "extracted": {
+            "item_category": "id_card",
+            "main_color": "unknown",
+            "general_location": "other",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "id_card",
+              "wallet"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 7",
+          "tags": [
+            "uncertain location",
+            "synonym",
+            "messy text"
+          ],
+          "text": "left my jacket in a lecture hall at segerstedt?? or maybe ITC idk, it was the 8th i think. its dark blue, puffer style like north face. should be a hair tie and some receipts in the pocket",
+          "expected": "H7.1",
+          "extracted": {
+            "item_category": "jacket",
+            "main_color": "blue",
+            "general_location": "segerstedt_building",
+            "event_date": "2026-10-08"
+          },
+          "search": {
+            "search_categories": [
+              "jacket"
+            ],
+            "search_locations": [
+              "segerstedt_building",
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H7.1"
+          ],
+          "ranked": [
+            [
+              "H7.1",
+              75
+            ]
+          ],
+          "reasons": [
+            "The hidden feature matches and the color, style and date line up, but the building reported differs from the query."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H7.1"
+        },
+        {
+          "tag": "case 8",
+          "tags": [
+            "no match",
+            "near-miss"
+          ],
+          "text": "Lost a silver charm bracelet around Engelska parken on the 10th, one of the charms is a tiny Eiffel tower. It means a lot to me",
+          "expected": null,
+          "extracted": {
+            "item_category": "jewelry",
+            "main_color": "silver",
+            "general_location": "english_park_campus",
+            "event_date": "2026-10-10"
+          },
+          "search": {
+            "search_categories": [
+              "jewelry"
+            ],
+            "search_locations": [
+              "english_park_campus"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H8.1"
+          ],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 9",
+          "tags": [
+            "non-English",
+            "synonym",
+            "vague date"
+          ],
+          "text": "Hej! I lost my glasögon (glasses) in a brown case, maybe in the BMC lab area, some day last week. They're my only pair so kind of urgent",
+          "expected": "H9.1",
+          "extracted": {
+            "item_category": "glasses",
+            "main_color": "brown",
+            "general_location": "biomedical_centre",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "glasses"
+            ],
+            "search_locations": [
+              "biomedical_centre"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H9.2",
+            "H9.1"
+          ],
+          "ranked": [
+            [
+              "H9.1",
+              85
+            ],
+            [
+              "H9.2",
+              35
+            ]
+          ],
+          "reasons": [
+            "The category, color, and case details match, and the date is compatible; the location is close enough and no contradictions are present.",
+            "The category and color match, but the item type (sunglasses) and specific location differ from the query."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": "H9.1"
+        },
+        {
+          "tag": "case 10",
+          "tags": [
+            "no match",
+            "near-miss",
+            "relative date"
+          ],
+          "text": "lenovo laptop charger, usb-c, 65W, left it plugged in at the ångström study area about 2 weeks ago",
+          "expected": null,
+          "extracted": {
+            "item_category": "charger",
+            "main_color": "unknown",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-06"
+          },
+          "search": {
+            "search_categories": [
+              "charger"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H10.2",
+            "H10.1"
+          ],
+          "ranked": [
+            [
+              "H10.2",
+              59
+            ],
+            [
+              "H10.1",
+              35
+            ]
+          ],
+          "reasons": [
+            "All key details such as brand, power, location and date align, and the hidden feature is consistent with the query.",
+            "The brand differs (Dell vs Lenovo) and the hidden feature does not match, making it unlikely to be the same charger."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": null
+        }
+      ],
+      [
+        {
+          "tag": "case 1",
+          "tags": [
+            "synonym",
+            "relative date"
+          ],
+          "text": "lost my airpods yesterday, pretty sure it was somewhere in ångström. just the white case w/ both buds inside. theres a small cat sticker on the back of the case",
+          "expected": "H1.1",
+          "extracted": {
+            "item_category": "headphones",
+            "main_color": "white",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "headphone_case",
+              "headphones"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H1.1"
+          ],
+          "ranked": [
+            [
+              "H1.1",
+              95
+            ]
+          ],
+          "reasons": [
+            "All key details match: same white case, both buds inside, same location and date, and the hidden cat sticker matches."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H1.1"
+        },
+        {
+          "tag": "case 2",
+          "tags": [
+            "non-English",
+            "vague date"
+          ],
+          "text": "我上周在Ekonomikum那边丢了一个黑色双肩包😭 里面有一台联想笔记本还有一本统计学的书，包侧面那个小拉链是坏的",
+          "expected": "H2.1",
+          "extracted": {
+            "item_category": "backpack",
+            "main_color": "black",
+            "general_location": "ekonomikum",
+            "event_date": "2026-10-13"
+          },
+          "search": {
+            "search_categories": [
+              "backpack",
+              "bag"
+            ],
+            "search_locations": [
+              "ekonomikum"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H2.1",
+            "F4",
+            "F3"
+          ],
+          "ranked": [
+            [
+              "H2.1",
+              95
+            ],
+            [
+              "F4",
+              45
+            ]
+          ],
+          "reasons": [
+            "All main attributes align; the hidden feature matches and the broken side zipper is consistent.",
+            "Color and location match, but the hidden feature differs and the broken zipper isn’t mentioned."
+          ],
+          "leaks": [
+            [
+              "broken",
+              "side",
+              "zipper"
+            ],
+            [
+              "broken",
+              "zipper"
+            ]
+          ],
+          "pred": "H2.1"
+        },
+        {
+          "tag": "case 3",
+          "tags": [
+            "non-English",
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Hej, jag har tappat mina nycklar någonstans mellan Flogsta och centralen i måndags. Tre nycklar på en röd nyckelsnodd, en av dem är en cykelnyckel.",
+          "expected": "H3.1",
+          "extracted": {
+            "item_category": "keys",
+            "main_color": "red",
+            "general_location": "uppsala_central_station",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "keys"
+            ],
+            "search_locations": [
+              "uppsala_central_station"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H3.1"
+          ],
+          "ranked": [
+            [
+              "H3.1",
+              59
+            ]
+          ],
+          "reasons": [
+            "The red lanyard, three keys and the presence of a bike key all match the lost item, and the hidden feature is consistent with the query."
+          ],
+          "leaks": [
+            [
+              "bike",
+              "key"
+            ]
+          ],
+          "pred": null
+        },
+        {
+          "tag": "case 4",
+          "tags": [
+            "short / generic",
+            "vague date"
+          ],
+          "text": "black umbrella, carolina, last week",
+          "expected": "H4.1",
+          "extracted": {
+            "item_category": "umbrella",
+            "main_color": "black",
+            "general_location": "carolina_rediviva",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "umbrella"
+            ],
+            "search_locations": [
+              "carolina_rediviva"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H4.2",
+            "H4.1"
+          ],
+          "ranked": [
+            [
+              "H4.2",
+              59
+            ],
+            [
+              "H4.1",
+              59
+            ]
+          ],
+          "reasons": [
+            "The color and general location match and it includes a hidden feature, but the reported date is noticeably earlier than the “last week” mentioned in the query.",
+            "The color and general location match, and the date is close to the “last week” timeframe; the hidden feature also aligns, making it a stronger candidate."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": null
+        },
+        {
+          "tag": "case 5",
+          "tags": [
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Lost my iPhone at a nation pub on friday night (i think västgöta but could have been another one). it has a dark green silicone case and the screen is cracked. please help",
+          "expected": "H5.1",
+          "extracted": {
+            "item_category": "phone",
+            "main_color": "green",
+            "general_location": "other",
+            "event_date": "2026-10-16"
+          },
+          "search": {
+            "search_categories": [
+              "phone"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H5.1"
+          ],
+          "ranked": [
+            [
+              "H5.1",
+              95
+            ]
+          ],
+          "reasons": [
+            "Color, case type, cracked screen and timing all align, and the hidden feature does not conflict, indicating a strong match."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H5.1"
+        },
+        {
+          "tag": "case 6",
+          "tags": [
+            "no match",
+            "non-English",
+            "uncertain location",
+            "vague date"
+          ],
+          "text": "学生卡丢了，上面名字是 Wang Lei，大概是十月初在图书馆丢的，不记得是哪个图书馆了",
+          "expected": null,
+          "extracted": {
+            "item_category": "id_card",
+            "main_color": "unknown",
+            "general_location": "other",
+            "event_date": "2026-10-01"
+          },
+          "search": {
+            "search_categories": [
+              "id_card",
+              "wallet"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 7",
+          "tags": [
+            "uncertain location",
+            "synonym",
+            "messy text"
+          ],
+          "text": "left my jacket in a lecture hall at segerstedt?? or maybe ITC idk, it was the 8th i think. its dark blue, puffer style like north face. should be a hair tie and some receipts in the pocket",
+          "expected": "H7.1",
+          "extracted": {
+            "item_category": "jacket",
+            "main_color": "blue",
+            "general_location": "segerstedt_building",
+            "event_date": "2026-10-08"
+          },
+          "search": {
+            "search_categories": [
+              "jacket"
+            ],
+            "search_locations": [
+              "segerstedt_building",
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H7.1"
+          ],
+          "ranked": [
+            [
+              "H7.1",
+              92
+            ]
+          ],
+          "reasons": [
+            "The hidden feature matches, and the color, type, and date all agree; the location difference is not a clear conflict given the uncertain building in the query."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H7.1"
+        },
+        {
+          "tag": "case 8",
+          "tags": [
+            "no match",
+            "near-miss"
+          ],
+          "text": "Lost a silver charm bracelet around Engelska parken on the 10th, one of the charms is a tiny Eiffel tower. It means a lot to me",
+          "expected": null,
+          "extracted": {
+            "item_category": "jewelry",
+            "main_color": "silver",
+            "general_location": "english_park_campus",
+            "event_date": "2026-10-10"
+          },
+          "search": {
+            "search_categories": [
+              "jewelry"
+            ],
+            "search_locations": [
+              "english_park_campus"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H8.1"
+          ],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 9",
+          "tags": [
+            "non-English",
+            "synonym",
+            "vague date"
+          ],
+          "text": "Hej! I lost my glasögon (glasses) in a brown case, maybe in the BMC lab area, some day last week. They're my only pair so kind of urgent",
+          "expected": "H9.1",
+          "extracted": {
+            "item_category": "glasses",
+            "main_color": "brown",
+            "general_location": "biomedical_centre",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "glasses"
+            ],
+            "search_locations": [
+              "biomedical_centre"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H9.2",
+            "H9.1"
+          ],
+          "ranked": [
+            [
+              "H9.1",
+              70
+            ],
+            [
+              "H9.2",
+              55
+            ]
+          ],
+          "reasons": [
+            "Many details align (brown case, glasses, BMC building) and no contradictions, though the exact spot (corridor vs lab area) is different.",
+            "Most details match (color, category, brown case), but the location (cafeteria vs lab area) and the fact that they are sunglasses rather than unspecified glasses make the match uncertain."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": "H9.1"
+        },
+        {
+          "tag": "case 10",
+          "tags": [
+            "no match",
+            "near-miss",
+            "relative date"
+          ],
+          "text": "lenovo laptop charger, usb-c, 65W, left it plugged in at the ångström study area about 2 weeks ago",
+          "expected": null,
+          "extracted": {
+            "item_category": "charger",
+            "main_color": "unknown",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-06"
+          },
+          "search": {
+            "search_categories": [
+              "charger"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H10.2",
+            "H10.1"
+          ],
+          "ranked": [
+            [
+              "H10.2",
+              95
+            ],
+            [
+              "H10.1",
+              40
+            ]
+          ],
+          "reasons": [
+            "All key details such as brand, power, and location match and there are no contradictions.",
+            "The brand differs and the hidden feature does not match, though the location and power are similar."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": "H10.2"
+        }
+      ],
+      [
+        {
+          "tag": "case 1",
+          "tags": [
+            "synonym",
+            "relative date"
+          ],
+          "text": "lost my airpods yesterday, pretty sure it was somewhere in ångström. just the white case w/ both buds inside. theres a small cat sticker on the back of the case",
+          "expected": "H1.1",
+          "extracted": {
+            "item_category": "headphones",
+            "main_color": "white",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "headphone_case",
+              "headphones"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H1.1"
+          ],
+          "ranked": [
+            [
+              "H1.1",
+              95
+            ]
+          ],
+          "reasons": [
+            "All key details match: white case with both earbuds, same location and date, and the hidden cat sticker matches; no contradictions."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H1.1"
+        },
+        {
+          "tag": "case 2",
+          "tags": [
+            "non-English",
+            "vague date"
+          ],
+          "text": "我上周在Ekonomikum那边丢了一个黑色双肩包😭 里面有一台联想笔记本还有一本统计学的书，包侧面那个小拉链是坏的",
+          "expected": "H2.1",
+          "extracted": {
+            "item_category": "backpack",
+            "main_color": "black",
+            "general_location": "ekonomikum",
+            "event_date": "2026-10-13"
+          },
+          "search": {
+            "search_categories": [
+              "backpack",
+              "bag"
+            ],
+            "search_locations": [
+              "ekonomikum"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H2.1",
+            "F4",
+            "F3"
+          ],
+          "ranked": [
+            [
+              "H2.1",
+              95
+            ],
+            [
+              "F4",
+              58
+            ],
+            [
+              "F3",
+              35
+            ]
+          ],
+          "reasons": [
+            "All main details align: same color, location, date within a day, and the broken side zipper and contents match.",
+            "Color, location and date are consistent, but the specific broken side zipper and contents are not mentioned, and the hidden feature differs.",
+            "Only the color and general location match; none of the distinctive features or hidden contents correspond."
+          ],
+          "leaks": [
+            [
+              "broken",
+              "side",
+              "zipper"
+            ],
+            [
+              "broken",
+              "side",
+              "zipper"
+            ],
+            []
+          ],
+          "pred": "H2.1"
+        },
+        {
+          "tag": "case 3",
+          "tags": [
+            "non-English",
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Hej, jag har tappat mina nycklar någonstans mellan Flogsta och centralen i måndags. Tre nycklar på en röd nyckelsnodd, en av dem är en cykelnyckel.",
+          "expected": "H3.1",
+          "extracted": {
+            "item_category": "keys",
+            "main_color": "red",
+            "general_location": "other",
+            "event_date": "2026-10-19"
+          },
+          "search": {
+            "search_categories": [
+              "keys"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H3.2"
+          ],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 4",
+          "tags": [
+            "short / generic",
+            "vague date"
+          ],
+          "text": "black umbrella, carolina, last week",
+          "expected": "H4.1",
+          "extracted": {
+            "item_category": "umbrella",
+            "main_color": "black",
+            "general_location": "carolina_rediviva",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "umbrella"
+            ],
+            "search_locations": [
+              "carolina_rediviva"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H4.2",
+            "H4.1"
+          ],
+          "ranked": [
+            [
+              "H4.2",
+              59
+            ],
+            [
+              "H4.1",
+              59
+            ]
+          ],
+          "reasons": [
+            "The color and general location match, and the extra details do not conflict, though the reported date is a bit earlier than “last week\".",
+            "The color and location match, and the date is close to the \"last week\" timeframe; the extra details are consistent and provide a matching hidden feature."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": null
+        },
+        {
+          "tag": "case 5",
+          "tags": [
+            "uncertain location",
+            "weekday date"
+          ],
+          "text": "Lost my iPhone at a nation pub on friday night (i think västgöta but could have been another one). it has a dark green silicone case and the screen is cracked. please help",
+          "expected": "H5.1",
+          "extracted": {
+            "item_category": "phone",
+            "main_color": "green",
+            "general_location": "other",
+            "event_date": "2026-10-16"
+          },
+          "search": {
+            "search_categories": [
+              "phone"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H5.1"
+          ],
+          "ranked": [
+            [
+              "H5.1",
+              88
+            ]
+          ],
+          "reasons": [
+            "The color, case type and cracked screen match, and the timing and location are consistent despite a one‑day difference; no contradictions are present."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H5.1"
+        },
+        {
+          "tag": "case 6",
+          "tags": [
+            "no match",
+            "non-English",
+            "uncertain location",
+            "vague date"
+          ],
+          "text": "学生卡丢了，上面名字是 Wang Lei，大概是十月初在图书馆丢的，不记得是哪个图书馆了",
+          "expected": null,
+          "extracted": {
+            "item_category": "id_card",
+            "main_color": "unknown",
+            "general_location": "other",
+            "event_date": "2026-10-01"
+          },
+          "search": {
+            "search_categories": [
+              "id_card",
+              "wallet"
+            ],
+            "search_locations": [
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 7",
+          "tags": [
+            "uncertain location",
+            "synonym",
+            "messy text"
+          ],
+          "text": "left my jacket in a lecture hall at segerstedt?? or maybe ITC idk, it was the 8th i think. its dark blue, puffer style like north face. should be a hair tie and some receipts in the pocket",
+          "expected": "H7.1",
+          "extracted": {
+            "item_category": "jacket",
+            "main_color": "blue",
+            "general_location": "segerstedt_building",
+            "event_date": "2026-10-08"
+          },
+          "search": {
+            "search_categories": [
+              "jacket"
+            ],
+            "search_locations": [
+              "segerstedt_building",
+              "other"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H7.1"
+          ],
+          "ranked": [
+            [
+              "H7.1",
+              90
+            ]
+          ],
+          "reasons": [
+            "The hidden feature matches, and the color, style, and date are consistent; the only difference is the building, which the reporter was unsure about."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H7.1"
+        },
+        {
+          "tag": "case 8",
+          "tags": [
+            "no match",
+            "near-miss"
+          ],
+          "text": "Lost a silver charm bracelet around Engelska parken on the 10th, one of the charms is a tiny Eiffel tower. It means a lot to me",
+          "expected": null,
+          "extracted": {
+            "item_category": "jewelry",
+            "main_color": "silver",
+            "general_location": "english_park_campus",
+            "event_date": "2026-10-10"
+          },
+          "search": {
+            "search_categories": [
+              "jewelry"
+            ],
+            "search_locations": [
+              "english_park_campus"
+            ],
+            "date_window_days": 7
+          },
+          "candidates": [
+            "H8.1"
+          ],
+          "ranked": [],
+          "reasons": [],
+          "leaks": [],
+          "pred": null
+        },
+        {
+          "tag": "case 9",
+          "tags": [
+            "non-English",
+            "synonym",
+            "vague date"
+          ],
+          "text": "Hej! I lost my glasögon (glasses) in a brown case, maybe in the BMC lab area, some day last week. They're my only pair so kind of urgent",
+          "expected": "H9.1",
+          "extracted": {
+            "item_category": "glasses",
+            "main_color": "brown",
+            "general_location": "biomedical_centre",
+            "event_date": null
+          },
+          "search": {
+            "search_categories": [
+              "glasses"
+            ],
+            "search_locations": [
+              "biomedical_centre"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H9.2",
+            "H9.1"
+          ],
+          "ranked": [
+            [
+              "H9.1",
+              72
+            ],
+            [
+              "H9.2",
+              58
+            ]
+          ],
+          "reasons": [
+            "The brown case and prescription glasses fit the description and the general BMC location aligns, though the exact spot differs; no hidden feature conflicts.",
+            "The brown case and general location match, but the item is described as sunglasses and was left in the cafeteria rather than the lab area, making the match less certain."
+          ],
+          "leaks": [
+            [],
+            []
+          ],
+          "pred": "H9.1"
+        },
+        {
+          "tag": "case 10",
+          "tags": [
+            "no match",
+            "near-miss",
+            "relative date"
+          ],
+          "text": "lenovo laptop charger, usb-c, 65W, left it plugged in at the ångström study area about 2 weeks ago",
+          "expected": null,
+          "extracted": {
+            "item_category": "charger",
+            "main_color": "unknown",
+            "general_location": "angstrom_laboratory",
+            "event_date": "2026-10-06"
+          },
+          "search": {
+            "search_categories": [
+              "charger"
+            ],
+            "search_locations": [
+              "angstrom_laboratory"
+            ],
+            "date_window_days": 21
+          },
+          "candidates": [
+            "H10.2",
+            "H10.1"
+          ],
+          "ranked": [
+            [
+              "H10.2",
+              95
+            ]
+          ],
+          "reasons": [
+            "All visible details (brand, power, location, date) align and there is no contradiction; the hidden feature matches."
+          ],
+          "leaks": [
+            []
+          ],
+          "pred": "H10.2"
+        }
+      ]
+    ]
+  }
+}
